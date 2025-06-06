@@ -71,7 +71,7 @@ export default function LoginPage() {
             <div className="p-8 lg:p-12 flex flex-col justify-center bg-white">
               <div className="max-w-md mx-auto w-full">
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl font-bold font-serif text-gray-900 mb-2">Login</h1>
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2">Login</h1>
                   <p className="text-gray-600 font-poppins">Enter your credentials to access your account</p>
                 </div>
 
@@ -136,7 +136,7 @@ export default function LoginPage() {
                     className="w-48 h-48 mx-auto object-cover"
                   />
                 </div>
-                <h2 className="font-serif text-3xl font-bold mb-4">Welcome Back!</h2>
+                <h2 className="text-3xl font-bold mb-4">Welcome Back!</h2>
                 <p className="font-poppins text-blue-100 text-lg leading-relaxed">
                   Let's continue your learning journey!
                 </p>

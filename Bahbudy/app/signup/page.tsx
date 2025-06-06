@@ -78,7 +78,7 @@ export default function SignupPage() {
                     className="w-50 h-48 mx-auto object-cove"
                   />
                 </div>
-                <h2 className="text-3xl font-serif font-bold mb-4">Come Join Us!</h2>
+                <h2 className="text-3xl font-bold mb-4">Come Join Us!</h2>
                 <p className="text-blue-100 text-lg font-poppins leading-relaxed">
                   Create an account to access learning content and track your progress.
                 </p>
@@ -97,8 +97,8 @@ export default function SignupPage() {
             <div className="p-8 lg:p-12 flex flex-col justify-center bg-white">
               <div className="max-w-md mx-auto w-full">
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2 font-serif">Sign Up</h1>
-                  <p className="text-gray-600 font-serif">Create your account</p>
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2 ">Sign Up</h1>
+                  <p className="text-gray-600 ">Create your account</p>
                 </div>
 
                 <form onSubmit={handleSignup} className="space-y-5">
