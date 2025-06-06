@@ -64,7 +64,7 @@ export default function DashboardPage() {
       lessonsCompleted: 0,
       totalLessons: 12,
       available: true,
-      color: "bg-pink-500",
+      color: "bg-blue-500",
     },
     {
       id: "coming-soon",
@@ -195,7 +195,7 @@ export default function DashboardPage() {
                       <span className="text-gray-600">Progress</span>
                       <span className="font-medium text-gray-900">{language.progress}%</span>
                     </div>
-                    <Progress value={language.progress} className="h-2" />
+                    <Progress value={language.progress} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-blue-500 [&>div]:to-indigo-500" />
                     <div className="flex justify-between text-xs text-gray-500">
                       <span>{language.lessonsCompleted} lessons completed</span>
                       <span>{language.totalLessons} total</span>

@@ -19,7 +19,7 @@ export default function SundaneseDashboardPage() {
               </Link>
             </Button>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
                 S
               </div>
               <h1 className="text-lg font-semibold text-gray-900">Sundanese Course</h1>

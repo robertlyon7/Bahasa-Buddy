@@ -115,7 +115,7 @@ export default function JavaneseDashboardPage() {
                 <span className="text-gray-700">Overall Progress</span>
                 <span className="text-blue-600">{Math.round(totalProgress)}%</span>
               </div>
-              <Progress value={totalProgress} className="h-3" />
+              <Progress value={totalProgress} className="h-3 [&>div]:bg-gradient-to-r [&>div]:from-blue-500 [&>div]:to-indigo-500" />
             </div>
           </CardContent>
         </Card>
@@ -190,7 +190,7 @@ export default function JavaneseDashboardPage() {
                                   {isUnlocked && (
                                     <div className="flex items-center gap-3">
                                       <div className="flex-1">
-                                        <Progress value={currentProgress} className="h-2" />
+                                        <Progress value={currentProgress} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-blue-500 [&>div]:to-indigo-500" />
                                       </div>
                                       <span className="text-xs font-medium text-gray-500 min-w-[3rem]">
                                         {currentProgress}%
