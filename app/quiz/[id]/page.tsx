@@ -262,7 +262,7 @@ export default function QuizPage({ params }: { params: { id: string } }) {
       <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
         <div className="container flex h-16 items-center justify-between">
           <Link
-            href="/dashboard"
+            href="/dashboard/javanese"
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -325,7 +325,7 @@ export default function QuizPage({ params }: { params: { id: string } }) {
 
           <div className="grid lg:grid-cols-4 gap-6">
             <div className="lg:col-span-3">
-              <Card className="border shadow-lg bg-white/80 backdrop-blur-sm">
+              <Card className="border bg-white/80 backdrop-blur-sm border-blue-300 shadow-lg">
                 <CardHeader className="p-6 md:p-8">
                   <CardTitle className="text-xl md:text-2xl text-center">{question.question}</CardTitle>
                 </CardHeader>
@@ -428,12 +428,12 @@ export default function QuizPage({ params }: { params: { id: string } }) {
               <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 shadow-lg">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg flex items-center gap-2">
-                    <Trophy className="h-5 w-5 text-purple-600" />
+                    <Trophy className="h-5 w-5 text-pink-600" />
                     Keep Going!
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-purple-700">
+                  <p className="text-sm text-pink-700">
                     {score === currentQuestion && currentQuestion > 0
                       ? "Perfect so far! 🎉"
                       : streak >= 2
