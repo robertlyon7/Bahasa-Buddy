@@ -490,7 +490,7 @@ export default function LessonPage({ params }: { params: Promise<{id: string }> 
                     backgroundPosition: "center 40%",
                   }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-indigo-600/80"></div>
+                  <div className="absolute inset-0"></div>
                   <div className="relative z-10">
                     <CardTitle className="text-white text-xl md:text-2xl flex items-center gap-3">
                       <BookOpen className="h-6 w-6" />

@@ -39,11 +39,11 @@ export default function HomePage() {
                 learn a language!
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
-                Master Languages with our AI-powered learning platform. Interactive lessons, personalized practice, and
+                Master Languages with our learning platform. Interactive lessons, personalized practice, and
                 real-world conversations await you.
               </p>
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-xl w-full sm:w-auto">
-                Start Learning <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="/signup"><p>Start Learning</p></Link> <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
             <div className="relative mt-8 lg:mt-0">
@@ -86,7 +86,7 @@ export default function HomePage() {
                   Interactive Lessons
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base text-center sm:text-left">
-                  Engage with dynamic content that makes learning Indonesian fun and memorable through games and
+                  Engage with dynamic content that makes learning fun and memorable through games and
                   exercises.
                 </p>
               </div>
@@ -108,10 +108,10 @@ export default function HomePage() {
                   <Zap className="w-full h-full text-blue-600" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-900 text-center sm:text-left">
-                  AI-Powered Progress
+                  Progress Bar
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base text-center sm:text-left">
-                  Smart algorithms track your learning patterns and adapt lessons to maximize your language acquisition
+                  Track your learning patterns and adapt lessons to maximize your language acquisition
                   speed.
                 </p>
               </div>
@@ -150,9 +150,9 @@ export default function HomePage() {
                     <Check className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div className="text-left">
-                    <div className="font-semibold text-sm sm:text-base">Real-time pronunciation feedback</div>
+                    <div className="font-semibold text-sm sm:text-base">Audio pronunciation</div>
                     <div className="text-gray-600 text-sm sm:text-base">
-                      AI-powered speech recognition helps perfect your accent
+                      Helps learn the correct pronunciation
                     </div>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function HomePage() {
                   <div className="text-left">
                     <div className="font-semibold text-sm sm:text-base">Cultural immersion content</div>
                     <div className="text-gray-600 text-sm sm:text-base">
-                      Learn language through Indonesian culture, food, and traditions
+                      Learn language through culture, food, and traditions
                     </div>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Your Indonesian learning journey
+              Your learning journey
               <br className="hidden sm:block" />
               starts with three simple steps
             </h2>
@@ -196,7 +196,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Take placement test</h3>
               <p className="text-gray-300 text-sm sm:text-base">
-                Quick assessment to determine your current Indonesian level and create a personalized learning path.
+                Quiz assessment to determine your current level and create a learning path.
               </p>
             </div>
             <div className="text-center">
@@ -212,9 +212,9 @@ export default function HomePage() {
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-lg sm:text-2xl font-bold">
                 3
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Practice with natives</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Self Practice</h3>
               <p className="text-gray-300 text-sm sm:text-base">
-                Join conversation sessions with Indonesian speakers to apply what you've learned.
+                Join and learn at your own pace and apply what you've learned.
               </p>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function HomePage() {
               language learners worldwide
             </h2>
             <p className="text-gray-600 mb-12 lg:mb-16 max-w-2xl mx-auto text-sm sm:text-base">
-              Join thousands of successful Indonesian learners who have achieved fluency with BahasaBuddy.
+              Join thousands of successful learners who have achieved fluency with BahasaBuddy.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 lg:mb-16">
               <div>
@@ -264,20 +264,19 @@ export default function HomePage() {
                     with confidence?
                   </h2>
                   <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                    Join our community of learners and start your Indonesian journey today.
+                    Join our community of learners and start your journey today.
                     <br className="hidden sm:block" />
-                    Free trial available - no credit card required.
+                    Free for everybody - no credit card required.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full lg:w-auto">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-xl w-full sm:w-auto">
-                    Start Free Trial
+                    <Link href="/signup"><p>Start now today</p></Link>
                   </Button>
                   <Button
                     size="lg"
-                    className="bg-slate-800 text-white hover:bg-gray-700 rounded-xl w-full sm:w-auto"
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    className="bg-slate-800 text-white hover:bg-gray-700 rounded-xl w-full sm:w-auto">
+                    <Link href="/login"><p>Learn More</p></Link> <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
               </div>
@@ -304,7 +303,7 @@ export default function HomePage() {
                   <div>Beginner Course</div>
                   <div>Intermediate</div>
                   <div>Advanced</div>
-                  <div>Business Indonesian</div>
+                  <div>Business</div>
                 </div>
               </div>
               <div>
