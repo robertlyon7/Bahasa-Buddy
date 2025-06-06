@@ -97,8 +97,11 @@ export default function ProfilePage() {
       <div className="flex min-h-screen flex-col bg-white">
         <header className="bg-white border-b sticky top-0 z-10">
           <div className="container flex h-16 items-center justify-between">
-            <div className="flex items-center gap-2">
-              <LogoIcon href={null} size="md" />
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">Bb</span>
+              </div>
+              <span className="font-bold text-xl">Bahasa Buddy</span>
             </div>
             <nav className="flex items-center gap-3">
               <Link

@@ -286,7 +286,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
@@ -328,7 +327,9 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-center pt-6 sm:pt-8 border-t border-gray-200 space-y-4 sm:space-y-0">
-              <div className="text-gray-500 text-xs sm:text-sm">©BahasaBuddy 2024. All Rights Reserved.</div>
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} BAHASABUDDY. All rights reserved.
+              </p>
               <div className="flex items-center space-x-3 sm:space-x-4">
                 <span className="text-gray-600 text-xs sm:text-sm">Follow us on</span>
                 <div className="flex space-x-3">
