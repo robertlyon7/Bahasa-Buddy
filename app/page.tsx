@@ -131,7 +131,7 @@ export default function HomePage() {
                 <div>
                   <div className="text-4xl sm:text-5xl font-bold text-pink-500 mb-2">50k+</div>
                   <div className="text-lg sm:text-xl text-gray-900 font-semibold">
-                    Students already mastering Indonesian
+                    Students already mastering languages
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">

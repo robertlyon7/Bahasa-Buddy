@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { registerUser } from "@/lib/auth"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Eye, EyeOff } from "lucide-react"
 
 export default function SignupPage() {
   const router = useRouter()
@@ -19,6 +19,8 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
@@ -27,7 +29,6 @@ export default function SignupPage() {
     setError("")
     setIsLoading(true)
 
-    // Validate inputs
     if (!username || !password) {
       setError("Please enter both username and password")
       setIsLoading(false)
@@ -40,14 +41,11 @@ export default function SignupPage() {
       return
     }
 
-    // Attempt registration
     const user = registerUser(username, password, displayName || undefined, email || undefined)
 
     if (user) {
-      // Successful registration
       router.push("/dashboard")
     } else {
-      // Failed registration
       setError("Username already exists")
       setIsLoading(false)
     }
@@ -56,7 +54,6 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-6xl">
-        {/* Back to Home Link */}
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
             <ArrowLeft className="h-4 w-4" />
@@ -64,10 +61,8 @@ export default function SignupPage() {
           </Link>
         </div>
 
-        {/* Main Card */}
         <Card className="overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
-            {/* Left Side - Image */}
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-8 flex flex-col justify-center items-center text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-black/10"></div>
               <div className="relative z-10 text-center max-w-md">
@@ -93,7 +88,6 @@ export default function SignupPage() {
               </div>
             </div>
 
-            {/* Right Side - Form */}
             <div className="p-8 lg:p-12 flex flex-col justify-center bg-white">
               <div className="max-w-md mx-auto w-full">
                 <div className="text-center mb-8">
@@ -151,30 +145,50 @@ export default function SignupPage() {
                     <Label htmlFor="password" className="text-gray-700 font-medium font-poppins">
                       Password
                     </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="Create a password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      className="h-11 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500  font-poppins"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Create a password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="h-11 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 font-poppins pr-12"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition-colors"
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                      >
+                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="confirmPassword" className="text-gray-700 font-medium font-poppins">
                       Confirm Password
                     </Label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="Confirm your password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      required
-                      className="h-11 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 font-poppins"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Confirm your password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        className="h-11 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 font-poppins pr-12"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition-colors"
+                        aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                      >
+                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
                   </div>
 
                   <Button

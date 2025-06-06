@@ -21,11 +21,9 @@ export default function DashboardPage() {
   })
 
   useEffect(() => {
-    // Calculate stats across all courses
     let completedLessons = 0
     let completedCourses = 0
 
-    // For Javanese course
     const javaneseProgress = lessons.map((lesson) => getLessonProgress(lesson.id))
     const javaneseCompleted = javaneseProgress.filter((p) => p >= 100).length
     completedLessons += javaneseCompleted
@@ -37,8 +35,8 @@ export default function DashboardPage() {
     setStats({
       totalCoursesCompleted: completedCourses,
       totalLessonsCompleted: completedLessons,
-      totalTimeSpent: completedLessons * 15, // Assume 15 minutes per lesson
-      currentStreak: 7, // This would come from actual tracking
+      totalTimeSpent: completedLessons * 15, 
+      currentStreak: 7, 
     })
   }, [])
 
@@ -82,7 +80,6 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -109,9 +106,7 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Welcome back, {user?.displayName || user?.username}!
@@ -119,7 +114,6 @@ export default function DashboardPage() {
           <p className="text-gray-600">Choose a language to continue your learning journey</p>
         </div>
 
-        {/* Stats Overview */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           <Card className="border-0 shadow-sm">
             <CardContent className="p-6">
@@ -152,8 +146,8 @@ export default function DashboardPage() {
           <Card className="border-0 shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Clock className="h-5 w-5 text-purple-600" />
+                <div className="p-2 bg-pink-100 rounded-lg">
+                  <Clock className="h-5 w-5 text-pink-600" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Time Spent</p>
@@ -164,12 +158,10 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        {/* Languages Section */}
         <div className="mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Choose Your Language</h2>
         </div>
 
-        {/* Languages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {languages.map((language) => (
             <Card
@@ -208,7 +200,7 @@ export default function DashboardPage() {
                       <span>{language.lessonsCompleted} lessons completed</span>
                       <span>{language.totalLessons} total</span>
                     </div>
-                    <Button asChild className="w-full mt-4">
+                    <Button asChild className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
                       <Link href={`/dashboard/${language.id}`}>
                         {language.progress > 0 ? "Continue Learning" : "Start Learning"}
                       </Link>

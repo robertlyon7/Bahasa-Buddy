@@ -25,10 +25,9 @@ import { useAuth } from "@/components/auth-provider"
 import { updateUserProfile, deleteUser } from "@/lib/auth"
 import { clearAllProgress } from "@/lib/progress"
 import ProtectedRoute from "@/components/protected-route"
-import { LogoIcon } from "@/components/logo-icon"
 
 export default function ProfilePage() {
-  const { user, logout } = useAuth()
+  const { user, logout, refreshUser } = useAuth()
   const [displayName, setDisplayName] = useState(user?.displayName || "")
   const [email, setEmail] = useState(user?.email || "")
   const [message, setMessage] = useState("")
@@ -45,7 +44,6 @@ export default function ProfilePage() {
       return
     }
 
-    // Update profile
     const updatedUser = updateUserProfile(user.id, {
       displayName,
       email,
@@ -68,16 +66,13 @@ export default function ProfilePage() {
   const handleDeleteAccount = () => {
     if (!user) return
 
-    // Prevent admin deletion
     if (user.username === "admin") {
       setMessage("Admin account cannot be deleted")
       return
     }
 
-    // Delete the account
     const deleted = deleteUser(user.id)
     if (deleted) {
-      // Logout and redirect to home
       logout()
       window.location.href = "/"
     } else {

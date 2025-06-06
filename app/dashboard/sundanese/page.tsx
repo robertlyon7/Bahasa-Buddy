@@ -15,11 +15,11 @@ export default function SundaneseDashboardPage() {
             <Button asChild variant="ghost" size="sm" className="mr-4">
               <Link href="/dashboard" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                <span className="hidden sm:inline">Back to Languages</span>
+                <span className="hidden sm:inline">Back to Dashboard</span>
               </Link>
             </Button>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
+              <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
                 S
               </div>
               <h1 className="text-lg font-semibold text-gray-900">Sundanese Course</h1>
@@ -33,8 +33,8 @@ export default function SundaneseDashboardPage() {
         {/* Coming Soon Message */}
         <Card className="border-0 shadow-sm">
           <CardContent className="p-12 text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <BookOpen className="h-8 w-8 text-green-600" />
+            <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <BookOpen className="h-8 w-8 text-pink-600" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Sundanese Course</h2>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">

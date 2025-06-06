@@ -16,7 +16,6 @@ export default function JavaneseDashboardPage() {
   const [unlockedLessons, setUnlockedLessons] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
-    // Load progress from localStorage
     const lessonProgress: Record<string, number> = {}
     const lessonUnlocked: Record<string, boolean> = {}
 
@@ -29,23 +28,21 @@ export default function JavaneseDashboardPage() {
     setUnlockedLessons(lessonUnlocked)
   }, [])
 
-  // Calculate course-specific stats
   const totalProgress = (Object.values(progress).reduce((sum, value) => sum + value, 0) / (lessons.length * 100)) * 100
   const completedLessons = Object.values(progress).filter((p) => p >= 100).length
-  const currentLevel = Math.floor(completedLessons / 3) + 1 // 3 lessons per level
+  const currentLevel = Math.floor(completedLessons / 3) + 1 
   const lessonsInCurrentLevel = completedLessons % 3
-  const timeSpent = completedLessons * 15 // 15 minutes per lesson
+  const timeSpent = completedLessons * 15 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-16">
             <Button asChild variant="ghost" size="sm" className="mr-4">
               <Link href="/dashboard" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                <span className="hidden sm:inline">Back to Languages</span>
+                <span className="hidden sm:inline">Back to Dashboard</span>
               </Link>
             </Button>
             <div className="flex items-center gap-3">
@@ -58,9 +55,7 @@ export default function JavaneseDashboardPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Course Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <Card className="border-0 shadow-sm">
             <CardContent className="p-6">
@@ -95,8 +90,8 @@ export default function JavaneseDashboardPage() {
           <Card className="border-0 shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Clock className="h-5 w-5 text-purple-600" />
+                <div className="p-2 bg-pink-100 rounded-lg">
+                  <Clock className="h-5 w-5 text-pink-600" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Time Spent</p>
@@ -107,7 +102,6 @@ export default function JavaneseDashboardPage() {
           </Card>
         </div>
 
-        {/* Overall Progress */}
         <Card className="mb-8 border-0 shadow-sm">
           <CardContent className="p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
@@ -126,7 +120,6 @@ export default function JavaneseDashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Lessons by Level */}
         <div className="space-y-8">
           {Array.from({ length: Math.ceil(lessons.length / 3) }, (_, levelIndex) => {
             const levelLessons = lessons.slice(levelIndex * 3, (levelIndex + 1) * 3)
@@ -168,7 +161,6 @@ export default function JavaneseDashboardPage() {
                       >
                         <CardContent className="p-6">
                           <div className="flex items-center gap-4">
-                            {/* Lesson Status */}
                             <div
                               className={`w-10 h-10 rounded-lg flex items-center justify-center text-white font-semibold flex-shrink-0 ${
                                 isCompleted ? "bg-green-500" : isUnlocked ? "bg-blue-500" : "bg-gray-400"
@@ -189,14 +181,12 @@ export default function JavaneseDashboardPage() {
                               )}
                             </div>
 
-                            {/* Lesson Content */}
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between">
                                 <div className="flex-1">
                                   <h4 className="font-semibold text-gray-900 mb-1">{lesson.title}</h4>
                                   <p className="text-sm text-gray-600 mb-3">{lesson.description}</p>
 
-                                  {/* Progress Bar */}
                                   {isUnlocked && (
                                     <div className="flex items-center gap-3">
                                       <div className="flex-1">
@@ -209,7 +199,6 @@ export default function JavaneseDashboardPage() {
                                   )}
                                 </div>
 
-                                {/* Action Button */}
                                 <div className="ml-4 flex-shrink-0">
                                   {isUnlocked ? (
                                     <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
@@ -239,8 +228,6 @@ export default function JavaneseDashboardPage() {
             )
           })}
         </div>
-
-        {/* Footer Spacing */}
         <div className="h-8"></div>
       </main>
     </div>

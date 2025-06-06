@@ -9,6 +9,7 @@ type AuthContextType = {
   isLoading: boolean
   isAuthenticated: boolean
   logout: () => void
+  refreshUser: () => void
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -16,43 +17,46 @@ const AuthContext = createContext<AuthContextType>({
   isLoading: true,
   isAuthenticated: false,
   logout: () => {},
+  refreshUser: () => {},
 })
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<Omit<User, "password"> | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    // Initialize auth system
-    initializeAuth()
-
-    // Check if user is logged in
+  const refreshUser = () => {
     const currentUser = getCurrentUser()
-    console.log("Auth Provider initialized, current user:", currentUser)
+    console.log("Refreshing user data:", currentUser)
     setUser(currentUser)
 
-    // Migrate old progress data to user-specific format if user is logged in
     if (currentUser) {
       migrateProgressData()
     }
+  }
 
+  useEffect(() => {
+    initializeAuth()
+
+    refreshUser()
     setIsLoading(false)
   }, [])
 
   useEffect(() => {
-    // Listen for storage events to sync auth state across tabs
     const handleStorageChange = () => {
-      const currentUser = getCurrentUser()
-      setUser(currentUser)
+      refreshUser()
+    }
 
-      // Migrate progress data when user changes
-      if (currentUser) {
-        migrateProgressData()
-      }
+    const handleUserUpdate = () => {
+      refreshUser()
     }
 
     window.addEventListener("storage", handleStorageChange)
-    return () => window.removeEventListener("storage", handleStorageChange)
+    window.addEventListener("userProfileUpdated", handleUserUpdate)
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+      window.removeEventListener("userProfileUpdated", handleUserUpdate)
+    }
   }, [])
 
   const logout = () => {
@@ -67,6 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         isAuthenticated: !!user,
         logout,
+        refreshUser,
       }}
     >
       {children}

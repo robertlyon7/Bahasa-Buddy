@@ -10,12 +10,13 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { loginUser } from "@/lib/auth"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Eye, EyeOff } from "lucide-react"
 
 export default function LoginPage() {
   const router = useRouter()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,7 +25,6 @@ export default function LoginPage() {
     setError("")
     setIsLoading(true)
 
-    // Validate inputs
     if (!username || !password) {
       setError("Please enter both username and password")
       setIsLoading(false)
@@ -33,15 +33,12 @@ export default function LoginPage() {
 
     console.log("Attempting login with:", username, password)
 
-    // Attempt login
     const user = loginUser(username, password)
 
     if (user) {
-      // Successful login
       console.log("Login successful, redirecting to dashboard")
       setIsLoading(false)
 
-      // Use a small timeout to ensure the auth state is updated before navigation
       setTimeout(() => {
         window.location.href = "/dashboard"
       }, 100)
@@ -56,7 +53,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-6xl">
-        {/* Back to Home Link */}
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
             <ArrowLeft className="h-4 w-4" />
@@ -64,7 +60,6 @@ export default function LoginPage() {
           </Link>
         </div>
 
-        {/* Main Card */}
         <Card className="overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
             {/* Left Side - Form */}
@@ -99,19 +94,32 @@ export default function LoginPage() {
                       <Label htmlFor="password" className="font-poppins text-gray-700 font-medium">
                         Password
                       </Label>
-                      <Link href="#" className="font-poppins marker:text-sm text-blue-600 hover:text-blue-700 hover:underline">
+                      <Link
+                        href="#"
+                        className="font-poppins marker:text-sm text-blue-600 hover:text-blue-700 hover:underline"
+                      >
                         Forgot password?
                       </Link>
                     </div>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-12"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition-colors"
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                      >
+                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
                   </div>
 
                   <Button
@@ -125,7 +133,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Right Side - Image */}
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-8 flex flex-col justify-center items-center text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-black/10"></div>
               <div className="relative z-10 text-center max-w-md">
