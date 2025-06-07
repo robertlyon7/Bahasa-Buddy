@@ -271,7 +271,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full lg:w-auto">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-xl w-full sm:w-auto">
-                    <Link href="/signup"><p>Start now today</p></Link>
+                    <Link href="/signup"><p>Start now</p></Link>
                   </Button>
                   <Button
                     size="lg"

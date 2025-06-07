@@ -152,7 +152,7 @@ export default function LessonPage({ params }: { params: Promise<{id: string }> 
             {
               title: "Common Greetings",
               content:
-                "In Javanese, 'Hello' is 'Sugeng rawuh'. 'Good morning' is 'Sugeng enjing'. 'Good afternoon' is 'Sugeng siang'. 'Good evening' is 'Sugeng sonten'.",
+                "Here are the essential greetings in Javanese:",
               examples: [
                 { javanese: "Sugeng rawuh", english: "Hello/Welcome", pronunciation: "soo-geng rah-wooh" },
                 { javanese: "Sugeng enjing", english: "Good morning", pronunciation: "soo-geng en-jing" },
